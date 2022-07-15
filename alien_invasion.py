@@ -1,11 +1,12 @@
 import sys
 import pygame
+import settings
 
 def run_game():
     """Game initilisation and create object game"""
     pygame.init()
-    screen = pygame.display.set_mode((1200,800))
-    bg_color=(230,230,230)
+    ai_setting=settings.Settings()
+    screen = pygame.display.set_mode((ai_setting.screen_width,ai_setting.screen_high))
     pygame.display.set_caption('Alien Invasion')
 
     #Basic circle run
@@ -15,9 +16,9 @@ def run_game():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-            if event.type == pygame.BUTTON_LEFT:
-                pass
-        screen.fill(bg_color)
+            if event.type == pygame.K_ESCAPE:
+                sys.exit()
+        screen.fill(ai_setting.bg_color)
         pygame.display.flip()
 
 run_game()
